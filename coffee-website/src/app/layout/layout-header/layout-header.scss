@@ -1,0 +1,39 @@
+mat-toolbar {
+  width: 100%;
+  display: grid;
+  justify-items: end; /* or right */
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-evenly;
+}
+
+.left-isHandset {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: left;
+}
+
+.right-isHandset {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: right;
+}
+
+
+.left-isWeb {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: left;
+}
+
+.right-isWeb {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: right;
+}
+
+
+

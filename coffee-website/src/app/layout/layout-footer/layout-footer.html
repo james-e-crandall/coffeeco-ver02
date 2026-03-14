@@ -1,0 +1,14 @@
+
+<mat-toolbar>
+
+</mat-toolbar>
+    <div class="wrapper" [class.isHandset]="screenService.isHandset()"
+      [class.isTablet]="screenService.isTablet()"
+      [class.isWeb]="screenService.isWeb()">
+        <span>© 2026 Your Company Name</span>
+        <span>Current device type: {{ screenService.currentBreakpoint() }}</span>
+        <!-- Add more links or icons here -->
+        <span>isHandset: {{ screenService.isHandset() }}</span>
+        <span>isTablet: {{ screenService.isTablet() }}</span>
+        <span>isWeb: {{ screenService.isWeb() }}</span>
+    </div>
