@@ -12,5 +12,9 @@ var coffeeLibMigrationService = builder.AddProject<Projects.CoffeeLib_MigrationS
                             .WaitFor(coffeeLibDb)
                             .WithReference(coffeeLibDb);
 
+var coffeeWebsite = builder.AddJavaScriptApp("coffee-website", "../coffee-website", runScriptName: "start")
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
 
 builder.Build().Run();
