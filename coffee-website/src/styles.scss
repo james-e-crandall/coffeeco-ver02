@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+@use './app/styles/_85D7B4-aecebd-c2c1ff' as theme-one; // location of generated file
+
+html {
+  @include mat.theme((
+    color: (
+      primary: theme-one.$primary-palette,
+      secondary: theme-one.$secondary-palette,
+      tertiary: theme-one.$tertiary-palette,
+      theme-type: light,
+    ),
+    typography: OpenSans,
+    density: 0,
+  ));
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light dark;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+}
+
+.mat-bg-primary {
+  background-color: var(--mat-sys-primary);
+}
+
+.mat-bg-primary-container {
+  background-color: var(--mat-sys-primary-container);
+}
+
+.mat-bg-secondary {
+  background-color: var(--mat-sys-secondary);
+}
+
+.mat-bg-secondary-container {
+  background-color: var(--mat-sys-secondary-container);
+}
+
+.mat-bg-error {
+  background-color: var(--mat-sys-error);
+}
+
+.mat-bg-error-container {
+  background-color: var(--mat-sys-error-container);
+}
+
+.mat-bg-surface {
+  background-color: var(--mat-sys-surface);
+}
+
+.mat-bg-surface-container-highest {
+  background-color: var(--mat-sys-surface-container-highest);
+}
+
+.mat-bg-surface-container {
+  background-color: var(--mat-sys-surface-container);
+}
+
+.mat-bg-surface-container-low {
+  background-color: var(--mat-sys-surface-container-low);
+}
+
+.mat-bg-inverse-surface {
+  background-color: var(--mat-sys-inverse-surface);
+}
+
