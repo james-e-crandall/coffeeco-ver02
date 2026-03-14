@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="coffeeco-ver02.AppHost/coffeeco-ver02.AppHost.csproj" />
+  <Project Path="coffeeco-ver02.ServiceDefaults/coffeeco-ver02.ServiceDefaults.csproj" />
+  <Project Path="CoffeeLib.MigrationService/CoffeeLib.MigrationService.csproj" />
+  <Project Path="CoffeeLib/CoffeeLib.csproj" />
+  <Project Path="UILib.MigrationService/UILib.MigrationService.csproj" />
+  <Project Path="UILib/UILib.csproj" />
+</Solution>
