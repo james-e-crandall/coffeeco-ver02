@@ -1,6 +1,10 @@
+using System.Data.Common;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var sqlServer = builder.AddSqlServer("sqlserver");
+
+var baseDb = sqlServer.AddDatabase("base-db");
 var uiLibDb = sqlServer.AddDatabase("ui-lib-db");
 var coffeeLibDb = sqlServer.AddDatabase("coffee-lib-db");
 
@@ -12,7 +16,17 @@ var coffeeLibMigrationService = builder.AddProject<Projects.CoffeeLib_MigrationS
                             .WaitFor(coffeeLibDb)
                             .WithReference(coffeeLibDb);
 
+var dab = builder.AddDataAPIBuilder("dab", ["dab-config.json", "dab-config.ui-lib-db.json", "dab-config.coffee-lib-db.json"])
+            .WithReference(baseDb)
+            .WithReference(uiLibDb)
+            .WithReference(coffeeLibDb)
+            .WaitFor(baseDb)
+            .WaitFor(uiLibDb)
+            .WaitFor(coffeeLibDb);
+
 var coffeeWebsite = builder.AddJavaScriptApp("coffee-website", "../coffee-website", runScriptName: "start")
+    .WithReference(dab)
+    .WaitFor(dab)
     .WithHttpEndpoint(env: "PORT")
     .WithExternalHttpEndpoints()
     .PublishAsDockerFile();

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.7.90/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "mssql",
+    "connection-string": "@env('ConnectionStrings__base-db')",
+    "options": {
+      "set-session-context": false
+    }
+  },
+  "data-source-files": [
+    "dab-config.ui-lib-db.json",
+    "dab-config.coffee-lib-db.json"
+  ],
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api",
+      "request-body-strict": true
+    },
+    "graphql": {
+      "enabled": true,
+      "path": "/graphql",
+      "allow-introspection": true
+    },
+    "health": {
+      "enabled": true,
+      "cache-ttl-seconds": 5,
+      "roles": [
+        "anonymous"
+      ],
+      "max-query-parallelism": 4
+    }
+  },
+  "entities": {}
+}

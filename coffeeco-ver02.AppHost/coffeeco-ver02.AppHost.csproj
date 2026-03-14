@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.JavaScript" Version="13.1.2" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.1.2" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Azure.DataApiBuilder" Version="13.1.1" />
   </ItemGroup>
 
   <ItemGroup>
