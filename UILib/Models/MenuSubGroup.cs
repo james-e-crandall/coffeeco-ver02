@@ -1,4 +1,4 @@
-namespace CoffeeLib.Models;
+namespace UILib.Models;
 
 public class MenuSubGroup
 {
@@ -6,5 +6,5 @@ public class MenuSubGroup
     public string Name { get; set; } = string.Empty;
     public MenuGroup? MenuGroup { get; set; } = null!;
     public int MenuGroupId { get; set; }
-    //public List<DrinkJoin> DrinkJoins { get; } = [];
+    public ICollection<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
 }

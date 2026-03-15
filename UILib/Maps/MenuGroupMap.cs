@@ -1,6 +1,6 @@
-using CoffeeLib.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using UILib.Models;
 
 namespace UILib.Maps;
 

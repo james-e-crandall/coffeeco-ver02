@@ -1,4 +1,4 @@
-namespace CoffeeLib.Models;
+namespace UILib.Models;
 
 public class MenuGroup
 {
