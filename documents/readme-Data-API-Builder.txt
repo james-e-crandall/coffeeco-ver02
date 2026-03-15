@@ -80,3 +80,13 @@ add:
     }
 
 https://learn.microsoft.com/en-us/azure/data-api-builder/concept/security/how-to-authenticate-custom?tabs=bash
+
+dab add HomeList --source "HomeList" --permissions "Anonymous:read" -c "dab-config.ui-lib-db.json"
+
+dab add HomeRow --source "HomeRow" --permissions "Anonymous:read" -c "dab-config.ui-lib-db.json"
+
+dab add HomeItem --source "HomeItem" --permissions "Anonymous:read" -c "dab-config.ui-lib-db.json"
+
+dab update HomeList --relationship HomeRows --target.entity HomeRow --cardinality many -c "dab-config.ui-lib-db.json"
+
+dab update HomeRow --relationship HomeItems --target.entity HomeItem --cardinality many -c "dab-config.ui-lib-db.json"

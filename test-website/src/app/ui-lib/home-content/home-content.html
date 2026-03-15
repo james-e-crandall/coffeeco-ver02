@@ -1,0 +1,17 @@
+<p>home-content works!</p>
+<div class="container">
+  @if (dataResource.hasValue()) {
+    @for (item of dataResource.value().value; track $index) {
+      <div>
+        Id: {{item.Id}}
+      </div>
+      <div>
+        <coffee-home-row [parentId]="item.Id"></coffee-home-row>
+      </div>
+    }
+  } @else if (dataResource.error()) {
+    <div>Could not load user information: {{ dataResource.error()?.message }}</div>
+  } @else if (dataResource.isLoading()) {
+    <div>Loading user info...</div>
+  }
+</div>

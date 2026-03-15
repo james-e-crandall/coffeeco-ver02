@@ -12,7 +12,7 @@ namespace UILib.MigrationService.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "HomeLists",
+                name: "HomeContents",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,7 +24,7 @@ namespace UILib.MigrationService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HomeLists", x => x.Id);
+                    table.PrimaryKey("PK_HomeContents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,15 +46,15 @@ namespace UILib.MigrationService.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HomeListId = table.Column<int>(type: "int", nullable: false)
+                    HomeContentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HomeRows", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HomeRows_HomeLists_HomeListId",
-                        column: x => x.HomeListId,
-                        principalTable: "HomeLists",
+                        name: "FK_HomeRows_HomeContents_HomeContentId",
+                        column: x => x.HomeContentId,
+                        principalTable: "HomeContents",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -141,7 +141,7 @@ namespace UILib.MigrationService.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "HomeLists",
+                table: "HomeContents",
                 columns: new[] { "Id", "Active", "Created", "StartDate", "Updated" },
                 values: new object[] { 1, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
@@ -152,7 +152,7 @@ namespace UILib.MigrationService.Migrations
 
             migrationBuilder.InsertData(
                 table: "HomeRows",
-                columns: new[] { "Id", "HomeListId" },
+                columns: new[] { "Id", "HomeContentId" },
                 values: new object[] { 1, 1 });
 
             migrationBuilder.InsertData(
@@ -176,9 +176,9 @@ namespace UILib.MigrationService.Migrations
                 column: "HomeRowId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HomeRows_HomeListId",
+                name: "IX_HomeRows_HomeContentId",
                 table: "HomeRows",
-                column: "HomeListId");
+                column: "HomeContentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MenuGroup_MenuId",
@@ -212,7 +212,7 @@ namespace UILib.MigrationService.Migrations
                 name: "MenuSubGroup");
 
             migrationBuilder.DropTable(
-                name: "HomeLists");
+                name: "HomeContents");
 
             migrationBuilder.DropTable(
                 name: "MenuGroup");

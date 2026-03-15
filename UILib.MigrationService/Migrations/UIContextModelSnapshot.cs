@@ -22,6 +22,41 @@ namespace UILib.MigrationService.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("UILib.Models.HomeContent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeContents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = true,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Updated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
             modelBuilder.Entity("UILib.Models.HomeItem", b =>
                 {
                     b.Property<int>("Id")
@@ -52,41 +87,6 @@ namespace UILib.MigrationService.Migrations
                         });
                 });
 
-            modelBuilder.Entity("UILib.Models.HomeList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HomeLists");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Active = true,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Updated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
-                });
-
             modelBuilder.Entity("UILib.Models.HomeRow", b =>
                 {
                     b.Property<int>("Id")
@@ -95,12 +95,12 @@ namespace UILib.MigrationService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("HomeListId")
+                    b.Property<int>("HomeContentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HomeListId");
+                    b.HasIndex("HomeContentId");
 
                     b.ToTable("HomeRows");
 
@@ -108,7 +108,7 @@ namespace UILib.MigrationService.Migrations
                         new
                         {
                             Id = 1,
-                            HomeListId = 1
+                            HomeContentId = 1
                         });
                 });
 
@@ -233,13 +233,13 @@ namespace UILib.MigrationService.Migrations
 
             modelBuilder.Entity("UILib.Models.HomeRow", b =>
                 {
-                    b.HasOne("UILib.Models.HomeList", "HomeList")
+                    b.HasOne("UILib.Models.HomeContent", "HomeContent")
                         .WithMany("HomeRows")
-                        .HasForeignKey("HomeListId")
+                        .HasForeignKey("HomeContentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("HomeList");
+                    b.Navigation("HomeContent");
                 });
 
             modelBuilder.Entity("UILib.Models.MenuGroup", b =>
@@ -275,7 +275,7 @@ namespace UILib.MigrationService.Migrations
                     b.Navigation("MenuGroup");
                 });
 
-            modelBuilder.Entity("UILib.Models.HomeList", b =>
+            modelBuilder.Entity("UILib.Models.HomeContent", b =>
                 {
                     b.Navigation("HomeRows");
                 });

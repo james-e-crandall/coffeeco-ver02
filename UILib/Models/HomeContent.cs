@@ -2,7 +2,7 @@ using System.Net;
 
 namespace UILib.Models;
 
-public class HomeList
+public class HomeContent
 {
     public int Id { get; set; }
     public ICollection<HomeRow> HomeRows { get; set; } = new List<HomeRow>();

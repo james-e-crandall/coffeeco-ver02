@@ -27,5 +27,118 @@
       "max-query-parallelism": 4
     }
   },
-  "entities": {}
+  "entities": {
+    "HomeContent": {
+      "source": {
+        "object": "HomeContents",
+        "type": "table"
+      },
+      "fields": [],
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "HomeContent",
+          "plural": "HomeContents"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "Anonymous",
+          "actions": [
+            {
+              "action": "read",
+              "fields": {
+                "exclude": [],
+                "include": [ "Id" ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "HomeRows": {
+          "cardinality": "many",
+          "target.entity": "HomeRow",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "HomeRow": {
+      "source": {
+        "object": "HomeRows",
+        "type": "table"
+      },
+      "fields": [],
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "HomeRow",
+          "plural": "HomeRows"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "Anonymous",
+          "actions": [
+            {
+              "action": "read",
+              "fields": {
+                "exclude": [],
+                "include": [ "Id", "HomeContentId" ]
+              }
+            }
+          ]
+        }
+      ],
+      "relationships": {
+        "HomeItems": {
+          "cardinality": "many",
+          "target.entity": "HomeItem",
+          "source.fields": [],
+          "target.fields": [],
+          "linking.source.fields": [],
+          "linking.target.fields": []
+        }
+      }
+    },
+    "HomeItem": {
+      "source": {
+        "object": "HomeItems",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "HomeItem",
+          "plural": "HomeItems"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "Anonymous",
+          "actions": [
+            {
+              "action": "read",
+              "fields": {
+                "exclude": [],
+                "include": [ "Id", "Text", "HomeRowId" ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
 }

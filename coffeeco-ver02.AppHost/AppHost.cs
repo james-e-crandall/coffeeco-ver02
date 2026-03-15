@@ -1,4 +1,5 @@
 using System.Data.Common;
+using Microsoft.Extensions.Hosting;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ var coffeeLibMigrationService = builder.AddProject<Projects.CoffeeLib_MigrationS
                             .WaitFor(coffeeLibDb)
                             .WithReference(coffeeLibDb);
 
+
+
 var dab = builder.AddDataAPIBuilder("dab", ["dab-config.json", "dab-config.ui-lib-db.json", "dab-config.coffee-lib-db.json"])
             .WithReference(baseDb)
             .WithReference(uiLibDb)
@@ -23,6 +26,17 @@ var dab = builder.AddDataAPIBuilder("dab", ["dab-config.json", "dab-config.ui-li
             .WaitFor(baseDb)
             .WaitFor(uiLibDb)
             .WaitFor(coffeeLibDb);
+
+if(builder.Environment.IsDevelopment())
+{
+    var testWebsite = builder.AddJavaScriptApp("test-website", "../test-website", runScriptName: "start")
+    .WithReference(dab)
+    .WaitFor(dab)
+    .WithHttpEndpoint(env: "PORT")
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
+}
+
 
 var coffeeWebsite = builder.AddJavaScriptApp("coffee-website", "../coffee-website", runScriptName: "start")
     .WithReference(dab)

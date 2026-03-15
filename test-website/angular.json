@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "coffee-website": {
+    "test-website": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -66,10 +66,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "coffee-website:build:production"
+              "buildTarget": "test-website:build:production"
             },
             "development": {
-              "buildTarget": "coffee-website:build:development"
+              "buildTarget": "test-website:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,6 +97,6 @@
     }
   },
   "cli": {
-    "analytics": "e460e4c3-4e50-475e-aedf-c6e5e4c1ab92"
+    "analytics": "d9859d45-ef45-41ed-9252-22a8939e7e0d"
   }
 }

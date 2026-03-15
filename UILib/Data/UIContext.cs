@@ -10,13 +10,13 @@ public partial class UIContext : DbContext
 
     public DbSet<HomeItem> HomeItems { get; set; }
     public DbSet<HomeRow> HomeRows { get; set; }
-    public DbSet<HomeList> HomeLists { get; set; }
+    public DbSet<HomeContent> HomeContents { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder); 
 
-        modelBuilder.ApplyConfiguration(new HomeListMap());
+        modelBuilder.ApplyConfiguration(new HomeContentMap());
         modelBuilder.ApplyConfiguration(new HomeRowMap());
         modelBuilder.ApplyConfiguration(new HomeItemMap());
 
