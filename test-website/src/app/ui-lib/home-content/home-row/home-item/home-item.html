@@ -8,6 +8,9 @@
       <div>
         Text: {{item.Text}}
       </div>
+      <div>
+        HomeItemTypeId: {{item.HomeItemTypeId}}
+      </div>
     }
   } @else if (dataResource.error()) {
     <div>Could not load user information: {{ dataResource.error()?.message }}</div>

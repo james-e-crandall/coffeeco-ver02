@@ -133,7 +133,7 @@
               "action": "read",
               "fields": {
                 "exclude": [],
-                "include": [ "Id", "Text", "HomeRowId" ]
+                "include": [ "Id", "Text", "HomeRowId", "HomeItemTypeId" ]
               }
             }
           ]

@@ -38,7 +38,8 @@ export type HomeRowList = z.infer<typeof HomeContentListSchema>;
 
 export const HomeItemSchema = z.object({
   Id: z.number(),
-  Text: z.string()
+  Text: z.string(),
+  HomeItemTypeId: z.number(),
 });
 
 export type HomeItem = z.infer<typeof HomeItemSchema>;
@@ -52,5 +53,21 @@ export const HomeItemListSchema = z.object({
 
 export type HomeItemList = z.infer<typeof HomeItemListSchema>;
 
+// --> HomeItemType
 
+export const HomeItemTypeSchema = z.object({
+  Id: z.number(),
+  Name: z.string(),
+});
+
+export type HomeItemType = z.infer<typeof HomeItemTypeSchema>;
+
+export const HomeItemTypeSchemaArray = z.array(HomeItemTypeSchema);
+
+// --> HomeSubGroupList
+export const HomeItemTypeListSchema = z.object({
+  value: HomeItemSchemaArray
+});
+
+export type HomeItemTypeList = z.infer<typeof HomeItemTypeListSchema>;
 
