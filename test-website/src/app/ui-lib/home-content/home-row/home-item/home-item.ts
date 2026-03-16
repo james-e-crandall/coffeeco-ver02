@@ -10,5 +10,7 @@ import { HomeService } from '../../../home-service';
 export class HomeItem {
   homeService = inject(HomeService);
   parentId = input.required<number>();
-  protected readonly dataResource = this.homeService.getHomeItemList(this.parentId);
+  protected readonly dataResource = this.homeService.getHomeItemListByParentId(this.parentId);
+  protected readonly dataTypeResource = this.homeService.getHomeItemTypeList();
+
 }

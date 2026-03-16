@@ -1,5 +1,5 @@
 import { Injectable, Signal } from '@angular/core';
-import { HomeItemList, HomeItemListSchema, HomeItemSchema, HomeContentList, HomeContentListSchema, HomeRowList, HomeRowListSchema } from './home.schema';
+import { HomeItemList, HomeItemListSchema, HomeItemSchema, HomeContentList, HomeContentListSchema, HomeRowList, HomeRowListSchema, HomeItemTypeList, HomeItemTypeListSchema, HomeRowTypeList, HomeRowTypeListSchema } from './home.schema';
 import { httpResource, HttpResourceRef } from '@angular/common/http';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class HomeService {
     );
   }
 
-  getHomeRowList(
+  getHomeRowListByParentId(
     parentId: Signal<number>
   ) : HttpResourceRef<HomeRowList | undefined> {
     return httpResource<HomeRowList>(
@@ -22,7 +22,24 @@ export class HomeService {
     );
   }
 
-  getHomeItemList(
+  getHomeRowTypeList(
+  ) : HttpResourceRef<HomeRowTypeList | undefined> {
+    return httpResource<HomeRowTypeList>(
+      () => `/api/HomeRowType`,
+      { parse: (response: unknown): HomeRowTypeList => HomeRowTypeListSchema.parse(response) },
+    );
+  }
+
+  getHomeRowTypeListByChildId(
+    parentId: Signal<number>
+  ) : HttpResourceRef<HomeRowTypeList | undefined> {
+    return httpResource<HomeRowTypeList>(
+      () => `/api/HomeRowType?$filter=Id eq ${parentId()}`,
+      { parse: (response: unknown): HomeRowTypeList => HomeRowTypeListSchema.parse(response) },
+    );
+  }
+
+  getHomeItemListByParentId(
     parentId: Signal<number>
   ) : HttpResourceRef<HomeItemList | undefined> {
     return httpResource<HomeItemList>(
@@ -30,5 +47,23 @@ export class HomeService {
       { parse: (response: unknown): HomeItemList => HomeItemListSchema.parse(response) },
     );
   }
+
+  getHomeItemTypeList(
+  ) : HttpResourceRef<HomeItemTypeList | undefined> {
+    return httpResource<HomeItemTypeList>(
+      () => `/api/HomeItemType`,
+      { parse: (response: unknown): HomeItemTypeList => HomeItemTypeListSchema.parse(response) },
+    );
+  }
+
+    getHomeItemTypeListByChildId(
+    parentId: Signal<number>
+  ) : HttpResourceRef<HomeItemTypeList | undefined> {
+    return httpResource<HomeItemTypeList>(
+      () => `/api/HomeItemType?$filter=Id eq ${parentId()}`,
+      { parse: (response: unknown): HomeItemTypeList => HomeItemTypeListSchema.parse(response) },
+    );
+  }
+
 
 }

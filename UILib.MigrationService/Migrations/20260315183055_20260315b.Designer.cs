@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UILib.Data;
 
@@ -11,9 +12,11 @@ using UILib.Data;
 namespace UILib.MigrationService.Migrations
 {
     [DbContext(typeof(UIContext))]
-    partial class UIContextModelSnapshot : ModelSnapshot
+    [Migration("20260315183055_20260315b")]
+    partial class _20260315b
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

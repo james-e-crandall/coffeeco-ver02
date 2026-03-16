@@ -6,5 +6,6 @@ public class HomeItem
     public string Text { get; set; }= string.Empty;
     public HomeRow HomeRow { get; set; } = null!;
     public int HomeRowId { get; set; }
-    public int HomeItemTypeId { get; set; }
+    public HomeItemType? HomeItemType { get; set; } = null!;
+    public int? HomeItemTypeId { get; set; }
 }

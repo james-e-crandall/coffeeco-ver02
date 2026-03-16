@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UILib.Data;
 
@@ -11,9 +12,11 @@ using UILib.Data;
 namespace UILib.MigrationService.Migrations
 {
     [DbContext(typeof(UIContext))]
-    partial class UIContextModelSnapshot : ModelSnapshot
+    [Migration("20260315174227_2003155a2")]
+    partial class _2003155a2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,14 +130,9 @@ namespace UILib.MigrationService.Migrations
                     b.Property<int>("HomeContentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HomeRowTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("HomeContentId");
-
-                    b.HasIndex("HomeRowTypeId");
 
                     b.ToTable("HomeRows");
 
@@ -143,30 +141,6 @@ namespace UILib.MigrationService.Migrations
                         {
                             Id = 1,
                             HomeContentId = 1
-                        });
-                });
-
-            modelBuilder.Entity("UILib.Models.HomeRowType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HomeRowTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Type = "Hello World"
                         });
                 });
 
@@ -303,13 +277,7 @@ namespace UILib.MigrationService.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UILib.Models.HomeRowType", "HomeRowType")
-                        .WithMany("HomeRows")
-                        .HasForeignKey("HomeRowTypeId");
-
                     b.Navigation("HomeContent");
-
-                    b.Navigation("HomeRowType");
                 });
 
             modelBuilder.Entity("UILib.Models.MenuGroup", b =>
@@ -358,11 +326,6 @@ namespace UILib.MigrationService.Migrations
             modelBuilder.Entity("UILib.Models.HomeRow", b =>
                 {
                     b.Navigation("HomeItems");
-                });
-
-            modelBuilder.Entity("UILib.Models.HomeRowType", b =>
-                {
-                    b.Navigation("HomeRows");
                 });
 
             modelBuilder.Entity("UILib.Models.Menu", b =>

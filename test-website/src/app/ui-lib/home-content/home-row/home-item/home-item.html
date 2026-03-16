@@ -17,4 +17,21 @@
   } @else if (dataResource.isLoading()) {
     <div>Loading user info...</div>
   }
+
+  <p>home-item-type works!</p>
+  @if (dataTypeResource.hasValue()) {
+    @for (item of dataTypeResource.value().value; track $index) {
+      <div>
+        Id: {{item.Id}}
+      </div>
+      <div>
+        Text: {{item.Type}}
+      </div>
+    }
+  } @else if (dataTypeResource.error()) {
+    <div>Could not load user information: {{ dataTypeResource.error()?.message }}</div>
+  } @else if (dataTypeResource.isLoading()) {
+    <div>Loading user info...</div>
+  }
+
 </div>

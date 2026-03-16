@@ -2,7 +2,6 @@ import { z } from 'zod';
 // --> Home
 export const HomeContentSchema = z.object({
   Id: z.number(),
-  // HomeRows: HomeRowSchemaArray
 });
 
 export type HomeContent = z.infer<typeof HomeContentSchema>;
@@ -20,7 +19,7 @@ export type HomeContentList = z.infer<typeof HomeContentListSchema>;
 
 export const HomeRowSchema = z.object({
   Id: z.number(),
-  // HomeRows: HomeRowSchemaArray
+  HomeRowTypeId: z.number().nullable()
 });
 
 export type HomeRow = z.infer<typeof HomeRowSchema>;
@@ -32,14 +31,33 @@ export const HomeRowListSchema = z.object({
   value: HomeRowSchemaArray
 });
 
-export type HomeRowList = z.infer<typeof HomeContentListSchema>;
+export type HomeRowList = z.infer<typeof HomeRowListSchema>;
+
+// --> HomeRowType
+
+export const HomeRowTypeSchema = z.object({
+  Id: z.number(),
+  Type: z.string(),
+});
+
+export type HomeRowType = z.infer<typeof HomeRowTypeSchema>;
+
+export const HomeRowTypeSchemaArray = z.array(HomeRowTypeSchema);
+
+// --> HomeSubGroupList
+export const HomeRowTypeListSchema = z.object({
+  value: HomeRowTypeSchemaArray
+});
+
+export type HomeRowTypeList = z.infer<typeof HomeRowTypeListSchema>;
+
 
 // --> HomeItem
 
 export const HomeItemSchema = z.object({
   Id: z.number(),
   Text: z.string(),
-  HomeItemTypeId: z.number(),
+  HomeItemTypeId: z.number().nullable()
 });
 
 export type HomeItem = z.infer<typeof HomeItemSchema>;
@@ -57,7 +75,7 @@ export type HomeItemList = z.infer<typeof HomeItemListSchema>;
 
 export const HomeItemTypeSchema = z.object({
   Id: z.number(),
-  Name: z.string(),
+  Type: z.string(),
 });
 
 export type HomeItemType = z.infer<typeof HomeItemTypeSchema>;
@@ -66,7 +84,7 @@ export const HomeItemTypeSchemaArray = z.array(HomeItemTypeSchema);
 
 // --> HomeSubGroupList
 export const HomeItemTypeListSchema = z.object({
-  value: HomeItemSchemaArray
+  value: HomeItemTypeSchemaArray
 });
 
 export type HomeItemTypeList = z.infer<typeof HomeItemTypeListSchema>;

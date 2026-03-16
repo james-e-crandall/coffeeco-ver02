@@ -52,7 +52,9 @@
               "action": "read",
               "fields": {
                 "exclude": [],
-                "include": [ "Id" ]
+                "include": [
+                  "Id"
+                ]
               }
             }
           ]
@@ -93,7 +95,11 @@
               "action": "read",
               "fields": {
                 "exclude": [],
-                "include": [ "Id", "HomeContentId" ]
+                "include": [
+                  "Id",
+                  "HomeContentId",
+                  "HomeRowTypeId"
+                ]
               }
             }
           ]
@@ -133,8 +139,65 @@
               "action": "read",
               "fields": {
                 "exclude": [],
-                "include": [ "Id", "Text", "HomeRowId", "HomeItemTypeId" ]
+                "include": [
+                  "Id",
+                  "Text",
+                  "HomeRowId",
+                  "HomeItemTypeId"
+                ]
               }
+            }
+          ]
+        }
+      ]
+    },
+    "HomeItemType": {
+      "source": {
+        "object": "HomeItemTypes",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "HomeItemType",
+          "plural": "HomeItemTypes"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "Anonymous",
+          "actions": [
+            {
+              "action": "read"
+            }
+          ]
+        }
+      ]
+    },
+    "HomeRowType": {
+      "source": {
+        "object": "HomeRowTypes",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "HomeRowType",
+          "plural": "HomeRowTypes"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "Anonymous",
+          "actions": [
+            {
+              "action": "read"
             }
           ]
         }
