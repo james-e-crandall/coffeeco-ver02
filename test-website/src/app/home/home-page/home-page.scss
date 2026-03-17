@@ -1,8 +1,21 @@
-.container  {
+.parent {
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 1em;
-  row-gap: 1em;
-  border-radius: 1em;
-  padding: 1em;
+  place-items: center; /* Centers both horizontally and vertically with one property */
+  border: 1em;
+  border-radius:  1em;
+}
+
+
+.item {
+  border: 2px solid rgb(95 97 110);
+  border-radius: 0.5em;
+  padding: 20px;
+  width: 10em;
+}
+
+.container {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

@@ -1,5 +1,7 @@
 .container{
   display: grid;
   grid-template-columns: auto;
-  max-width: 1440px;
+  border-style: solid;
+  border-color: blue;
+  height: 100%;
 }

@@ -48,6 +48,16 @@ export class HomeService {
     );
   }
 
+  getHomeItemListById(
+    id: Signal<number>
+  ) : HttpResourceRef<HomeItemList | undefined> {
+    return httpResource<HomeItemList>(
+      () => `/api/HomeItem?$filter=Id eq ${id()}`,
+      { parse: (response: unknown): HomeItemList => HomeItemListSchema.parse(response) },
+    );
+  }
+
+
   getHomeItemTypeList(
   ) : HttpResourceRef<HomeItemTypeList | undefined> {
     return httpResource<HomeItemTypeList>(

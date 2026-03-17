@@ -1,37 +1,18 @@
-<p>home-row works!</p>
 <div class="container">
   @if (dataResource.hasValue()) {
+    {{ dataResource.value().value.length }}
     @for (item of dataResource.value().value; track $index) {
-      <div>
-        Id: {{item.Id}}
-      </div>
-      <div>
-        HomeRowTypeId: {{item.HomeRowTypeId}}
-      </div>
-      <div>
-        <coffee-home-item [parentId]="item.Id"></coffee-home-item>
-      </div>
+    <div>
+      <ng-container *ngComponentOutlet="getItemComponent(item.HomeRowTypeId) ;inputs: { parentId: item.Id }"></ng-container>
+    </div>
+    <!-- <coffee-simple-message [parentId]="item.Id">
+
+    </coffee-simple-message> -->
     }
   } @else if (dataResource.error()) {
     <div>Could not load user information: {{ dataResource.error()?.message }}</div>
   } @else if (dataResource.isLoading()) {
     <div>Loading user info...</div>
   }
-
-  <p>home-row-type works!</p>
-  @if (dataTypeResource.hasValue()) {
-    @for (item of dataTypeResource.value().value; track $index) {
-      <div>
-        Id: {{item.Id}}
-      </div>
-      <div>
-        Text: {{item.Type}}
-      </div>
-    }
-  } @else if (dataTypeResource.error()) {
-    <div>Could not load user information: {{ dataTypeResource.error()?.message }}</div>
-  } @else if (dataTypeResource.isLoading()) {
-    <div>Loading user info...</div>
-  }
-
 </div>
+

@@ -1,15 +1,9 @@
-<p>home-item works!</p>
 <div class="container">
+  Home Item parent Id : {{ parentId() }}
   @if (dataResource.hasValue()) {
     @for (item of dataResource.value().value; track $index) {
       <div>
-        Id: {{item.Id}}
-      </div>
-      <div>
-        Text: {{item.Text}}
-      </div>
-      <div>
-        HomeItemTypeId: {{item.HomeItemTypeId}}
+      Home item: {{item.Text}}
       </div>
     }
   } @else if (dataResource.error()) {
@@ -17,21 +11,4 @@
   } @else if (dataResource.isLoading()) {
     <div>Loading user info...</div>
   }
-
-  <p>home-item-type works!</p>
-  @if (dataTypeResource.hasValue()) {
-    @for (item of dataTypeResource.value().value; track $index) {
-      <div>
-        Id: {{item.Id}}
-      </div>
-      <div>
-        Text: {{item.Type}}
-      </div>
-    }
-  } @else if (dataTypeResource.error()) {
-    <div>Could not load user information: {{ dataTypeResource.error()?.message }}</div>
-  } @else if (dataTypeResource.isLoading()) {
-    <div>Loading user info...</div>
-  }
-
 </div>

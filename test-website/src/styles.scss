@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+}
+
+/* Recommended approach in an external stylesheet (e.g., style.css) */
+html {
+    /* Ensures the html element spans the full height of the viewport */
+    min-height: 100%;
+    /* Apply color-scheme to html element */
+    color-scheme: light dark;
+}
+
+body {
+    /* Removes default browser margins, providing a consistent starting point */
+    margin: 0;
+    padding: 0;
+}

@@ -1,13 +1,17 @@
 <div class="container">
   @if (dataResource.hasValue()) {
-    <div>
-      @for (item of dataResource.value().value; track $index) {
-       <coffee-home-row [parentId]="item.Id"></coffee-home-row>
-      }
-    </div>
+    @for (item of dataResource.value().value; track $index) {
+      <div>
+        {{item.Text}}
+      </div>
+      <div>
+        {{item.Text}}
+      </div>
+    }
   } @else if (dataResource.error()) {
     <div>Could not load user information: {{ dataResource.error()?.message }}</div>
   } @else if (dataResource.isLoading()) {
     <div>Loading user info...</div>
   }
 </div>
+

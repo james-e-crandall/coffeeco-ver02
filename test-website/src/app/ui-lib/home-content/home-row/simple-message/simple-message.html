@@ -1,10 +1,11 @@
 <div class="container">
+  Simple Item parent Id : {{ parentId() }}
   @if (dataResource.hasValue()) {
-    <div>
-      @for (item of dataResource.value().value; track $index) {
-       <coffee-home-row [parentId]="item.Id"></coffee-home-row>
-      }
-    </div>
+    @for (item of dataResource.value().value; track $index) {
+      <div>
+        Simple Message: {{item.Text}}
+      </div>
+    }
   } @else if (dataResource.error()) {
     <div>Could not load user information: {{ dataResource.error()?.message }}</div>
   } @else if (dataResource.isLoading()) {
